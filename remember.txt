@@ -1,0 +1,39 @@
+一些杂记 = {
+
+  手机开发: {
+    关键meta： <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1, maximum-scale=1, user-scalable=no">
+    1. 一般按640设计图设计开发，保持原设计数据输出，设置initial-scale=0.5，就不用写页面时，取设计图的一半；
+    
+    2.手机定宽开发时，设置target-densitydpi=device-dpi
+    <meta name="viewport" content="target-densitydpi=device-dpi,width=device-width, user-scalable=no" />
+    or：
+    var densitydpi = 640 / w * window.devicePixelRatio * 160;
+    <meta name="viewport" content="target-densitydpi='+densitydpi+',width=device-width, user-scalable=no" />
+    背景图一般使用比较长的图片，设置background-size: cover;
+    
+    3.如动画过程有闪烁（通常发生在动画开始的时候），可以尝试下面的Hack
+    a、设置-webkit-transform-style: preserve-3d; 
+      or
+      -webkit-backface-visibility: hidden;
+      
+    4、输入时，键盘弹出会压缩整个viewport，一些定位在底部的元素，比如一些fixed到底部的广告，如果不想它跟着键盘挤上去，可先设置它
+      为普通文档流或者为absolute，键盘消失再设置回来
+      
+    5、手机上使用浏览器的滚动条很流畅，也看不到，一些容器内容太多时，可放心使用overflow:scroll
+  },
+  
+  页面开发: {
+    1、需要异步再进行某些异步方法时，有时连接不上，需设置async:false
+    2、新开窗口防止浏览器阻止比较有效方法是使用form表单提交，可先动态生成在页面上，再做操作
+    3、一些浏览器会自动填写表单，比较变态却有效的方法是不要有固定的label标签id对应input，再对input设置两个type属性：
+      <input type="password" type="text"/>
+      所以浏览器都会自读第一个type，但是可以防止自动填密码！
+    4、https页面，所有资源都需要设置https域名下，包括js、css和image，外链可不用
+    5、页面一些控件，比如安全控件，在启动调试工具时会消失，比如chrome，可使用弹出式调试模式；它优先级很高，基本难以遮盖，
+      可根据某些情况设置visibility:hidden，之后再设置回来visible
+  }
+
+  ......
+  更多 》》
+
+}
