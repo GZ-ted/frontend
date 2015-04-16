@@ -37,6 +37,9 @@
           win.addEventListener(resizeEvt, recalc, false);
           doc.addEventListener('DOMContentLoaded', recalc, false);
         })(document, window);
+        
+        //参考：http://isux.tencent.com/web-app-rem.html
+        //http://www.zhihu.com/question/25308946/answer/32240185
     </script>
 </body>
 </html>
