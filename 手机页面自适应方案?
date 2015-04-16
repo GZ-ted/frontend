@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<!--[if lt IE 7]><html class="ie6"><![endif]-->
+<!--[if IE 7]><html class="ie7"><![endif]-->
+<!--[if IE 8]><html class="ie8"><![endif]-->
+<!--[if IE 9]><html class="ie9"><![endif]-->
+<!--[if !IE]><!--><html><!--<![endif]-->
+<head>
+    <meta charset="UTF-8">
+    <title>手机页面自适应方案?</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <style>
+      /*html { font-size: 100px;}*/
+      img { display: block; width: 3.2rem;}
+    </style>
+</head>
+<body>
+  <div>
+   <img src="http://up24.com/front/mall/img/not_found.jpg" alt="你所访问的页面不存在" />
+   <img src="http://up24.com/front/mall/img/not_found.jpg" alt="你所访问的页面不存在" />
+</div>
+       <script>
+        (function (doc, win) {
+          var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+              var clientWidth = docEl.clientWidth;
+              if (!clientWidth) return;
+
+              /*
+               *  切页时，定义html的font-size为100px，640px的设计图 => 1rem = 100px
+               *  实际访问中，用js动态计算html的fontSize值，达到自适配效果
+              */
+              docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+            };
+
+          if (!doc.addEventListener) return;
+          win.addEventListener(resizeEvt, recalc, false);
+          doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</body>
+</html>
